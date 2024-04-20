@@ -1,0 +1,10 @@
+﻿insert into book (id, title, author, genre) values (1, 'Replacements, The', 'Wood', 'Comedy');
+insert into book (id, title, author, genre) values (2, 'Terms of Endearment', 'Marlyn', 'Comedy|Drama');
+insert into book (id, title, author, genre) values (3, 'Brigham City', 'Marni', 'Crime|Drama|Mystery');
+insert into book (id, title, author, genre) values (4, 'No', 'Lorilyn', 'Drama');
+insert into book (id, title, author, genre) values (5, 'Rules of the Game, The (La règle du jeu)', 'Patrice', 'Comedy|Drama');
+insert into book (id, title, author, genre) values (6, 'Princess for Christmas, A', 'Clarey', 'Children|Comedy');
+insert into book (id, title, author, genre) values (7, 'Employees'' Entrance', 'Miner', 'Drama|Romance');
+insert into book (id, title, author, genre) values (8, 'Knick Knack', 'Rebe', 'Animation|Children');
+insert into book (id, title, author, genre) values (9, 'Shadow of the Holy Book (Pyhän kirjan varjo)', 'Dawna', 'Documentary');
+insert into book (id, title, author, genre) values (10, 'Visitors, The', 'Ikey', 'Crime|Drama|Thriller');

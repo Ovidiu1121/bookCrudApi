@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "db528fdd-0b28-45d6-b253-8ce4026c65fc": {
+      "ProjectGuid": "db528fdd-0b28-45d6-b253-8ce4026c65fc",
+      "DisplayName": "BookCrudApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
