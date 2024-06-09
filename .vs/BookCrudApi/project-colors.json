@@ -5,7 +5,12 @@
       "ProjectGuid": "db528fdd-0b28-45d6-b253-8ce4026c65fc",
       "DisplayName": "BookCrudApi",
       "ColorIndex": 0
+    },
+    "5391c006-793a-44dd-940f-4e5d9eadc2c9": {
+      "ProjectGuid": "5391c006-793a-44dd-940f-4e5d9eadc2c9",
+      "DisplayName": "tests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

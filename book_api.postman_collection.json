@@ -10,7 +10,137 @@
 			"name": "GetAllBooks",
 			"request": {
 				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7193/api/v1/Book/all",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7193",
+					"path": [
+						"api",
+						"v1",
+						"Book",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
 				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetByTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7193/api/v1/Book/Brigham%20City",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7193",
+					"path": [
+						"api",
+						"v1",
+						"Book",
+						"Brigham%20City"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POSTCreateBook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"aaa\",\r\n  \"author\": \"ss\",\r\n  \"genre\": \"dd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7193/api/v1/Book/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7193",
+					"path": [
+						"api",
+						"v1",
+						"Book",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUTupdateBook",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 14,\r\n  \"title\": \"someNew\",\r\n  \"author\": \"him\",\r\n  \"genre\": \"horror\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7193/api/v1/Book/update/14",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7193",
+					"path": [
+						"api",
+						"v1",
+						"Book",
+						"update",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7193/api/v1/Book/delete/13",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7193",
+					"path": [
+						"api",
+						"v1",
+						"Book",
+						"delete",
+						"13"
+					]
+				}
 			},
 			"response": []
 		}
