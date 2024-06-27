@@ -16,9 +16,9 @@ namespace BookCrudApi.Books.Service
             _repository = repository;
         }
 
-        public async Task<Book> CreateBook(CreateBookRequest request)
+        public async Task<BookDto> CreateBook(CreateBookRequest request)
         {
-            Book book = await _repository.GetByTitleAsync(request.Title);
+            BookDto book = await _repository.GetByTitleAsync(request.Title);
 
             if (book!=null)
             {
@@ -29,9 +29,9 @@ namespace BookCrudApi.Books.Service
             return book;
         }
 
-        public async Task<Book> DeleteBookById(int id)
+        public async Task<BookDto> DeleteBookById(int id)
         {
-            Book book = await _repository.GetByIdAsync(id);
+            BookDto book = await _repository.GetByIdAsync(id);
 
             if (book==null)
             {
@@ -42,9 +42,9 @@ namespace BookCrudApi.Books.Service
             return book;
         }
 
-        public async Task<Book> UpdateBook(int id,UpdateBookRequest request)
+        public async Task<BookDto> UpdateBook(int id,UpdateBookRequest request)
         {
-            Book book = await _repository.GetByIdAsync(id);
+            BookDto book = await _repository.GetByIdAsync(id);
 
             if (book==null)
             {

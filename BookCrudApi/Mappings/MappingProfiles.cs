@@ -11,6 +11,7 @@ namespace BookCrudApi.Mappings
         {
             CreateMap<CreateBookRequest, Book>();
             CreateMap<UpdateBookRequest, Book>();
+            CreateMap<BookDto, Book>().ReverseMap();
         }
 
     }

@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookCrudApi.Dto;
 
 namespace tests.Helpers
 {
     public class TestBookFactory
     {
-        public static Book CreateBook(int id)
+        public static BookDto CreateBook(int id)
         {
 
-            return new Book
+            return new BookDto
             {
                 Id = id,
                 Title="The freak"+id,
@@ -22,14 +23,14 @@ namespace tests.Helpers
 
         }
 
-        public static List<Book> CreateBooks(int count)
+        public static ListBookDto CreateBooks(int count)
         {
 
-            List<Book> doctors = new List<Book>();
+            ListBookDto doctors = new ListBookDto();
 
             for (int i = 0; i<count; i++)
             {
-                doctors.Add(CreateBook(i));
+                doctors.bookList.Add(CreateBook(i));
             }
             return doctors;
 

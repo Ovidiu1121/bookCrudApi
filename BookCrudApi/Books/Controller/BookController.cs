@@ -19,13 +19,13 @@ namespace BookCrudApi.Books.Controller
             _bookQueryService = bookQueryService;
         }
 
-        public override async Task<ActionResult<Book>> CreateBook([FromBody] CreateBookRequest bookRequest)
+        public override async Task<ActionResult<BookDto>> CreateBook([FromBody] CreateBookRequest bookRequest)
         {
             try
             {
                 var books = await _bookCommandService.CreateBook(bookRequest);
 
-                return Ok(books);
+                return Created("Cartea a fost adaugata",books);
             }
             catch (ItemAlreadyExists ex)
             {
@@ -33,7 +33,7 @@ namespace BookCrudApi.Books.Controller
             }
         }
 
-        public override async Task<ActionResult<Book>> DeleteBook([FromRoute] int id)
+        public override async Task<ActionResult<BookDto>> DeleteBook([FromRoute] int id)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace BookCrudApi.Books.Controller
             }
         }
 
-        public override async Task<ActionResult<IEnumerable<Book>>> GetAll()
+        public override async Task<ActionResult<ListBookDto>> GetAll()
         {
             try
             {
@@ -60,7 +60,7 @@ namespace BookCrudApi.Books.Controller
             }
         }
 
-        public override async Task<ActionResult<Book>> GetByTitleRoute([FromRoute] string title)
+        public override async Task<ActionResult<BookDto>> GetByTitleRoute([FromRoute] string title)
         {
             try
             {
@@ -73,7 +73,20 @@ namespace BookCrudApi.Books.Controller
             }
         }
 
-        public override async Task<ActionResult<Book>> UpdateBook([FromRoute] int id, [FromBody] UpdateBookRequest bookRequest)
+        public override async Task<ActionResult<BookDto>> GetByIdRoute(int id)
+        {
+            try
+            {
+                var book = await _bookQueryService.GetById(id);
+                return Ok(book);
+            }
+            catch (ItemDoesNotExist ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        public override async Task<ActionResult<BookDto>> UpdateBook([FromRoute] int id, [FromBody] UpdateBookRequest bookRequest)
         {
             try
             {

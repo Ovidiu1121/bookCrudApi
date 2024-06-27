@@ -18,23 +18,34 @@ namespace BookCrudApi.Books.Repository
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Book>> GetAllAsync()
+        public async Task<ListBookDto> GetAllAsync()
         {
-            return await _context.Books.ToListAsync();
+            List<Book> result = await _context.Books.ToListAsync();
+            
+            ListBookDto listBookDto = new ListBookDto()
+            {
+                bookList = _mapper.Map<List<BookDto>>(result)
+            };
+
+            return listBookDto;
         }
 
-        public async Task<Book> GetByIdAsync(int id)
+        public async Task<BookDto> GetByIdAsync(int id)
         {
-           return await _context.Books.FirstOrDefaultAsync(x => x.Id.Equals(id));
+            var book = await _context.Books.Where(b => b.Id == id).FirstOrDefaultAsync();
+            
+            return _mapper.Map<BookDto>(book);
             
         }
 
-        public async Task<Book> GetByTitleAsync(string title)
+        public async Task<BookDto> GetByTitleAsync(string title)
         {
-           return await _context.Books.FirstOrDefaultAsync(x =>x.Title.Equals(title));
+            var book = await _context.Books.Where(b => b.Title.Equals(title)).FirstOrDefaultAsync();
+            
+            return _mapper.Map<BookDto>(book);
         }
 
-        public async Task<Book> CreateBook(CreateBookRequest request)
+        public async Task<BookDto> CreateBook(CreateBookRequest request)
         {
             var book = _mapper.Map<Book>(request);
 
@@ -42,10 +53,10 @@ namespace BookCrudApi.Books.Repository
 
             await _context.SaveChangesAsync();
 
-            return book;
+            return _mapper.Map<BookDto>(book);
         }
 
-        public async Task<Book> UpdateBook(int id, UpdateBookRequest request)
+        public async Task<BookDto> UpdateBook(int id, UpdateBookRequest request)
         {
             var book = await _context.Books.FindAsync(id);
 
@@ -57,11 +68,11 @@ namespace BookCrudApi.Books.Repository
 
             await _context.SaveChangesAsync();
 
-            return book;
+            return _mapper.Map<BookDto>(book);
 
         }
 
-        public async Task<Book> DeleteBookById(int id)
+        public async Task<BookDto> DeleteBookById(int id)
         {
             var book = await _context.Books.FindAsync(id);
 
@@ -69,7 +80,7 @@ namespace BookCrudApi.Books.Repository
 
             await _context.SaveChangesAsync();
 
-            return book;
+            return _mapper.Map<BookDto>(book);
 
         }
     }

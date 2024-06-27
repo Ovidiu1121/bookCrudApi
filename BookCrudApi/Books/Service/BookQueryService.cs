@@ -1,6 +1,7 @@
 ﻿using BookCrudApi.Books.Model;
 using BookCrudApi.Books.Repository.interfaces;
 using BookCrudApi.Books.Service.Interfaces;
+using BookCrudApi.Dto;
 using BookCrudApi.System.Constant;
 using BookCrudApi.System.Exceptions;
 
@@ -15,11 +16,11 @@ namespace BookCrudApi.Books.Service
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Book>> GetAll()
+        public async Task<ListBookDto> GetAll()
         {
-            IEnumerable<Book> books = await _repository.GetAllAsync();
+            ListBookDto books = await _repository.GetAllAsync();
 
-            if (books.Count().Equals(0))
+            if (books.bookList.Count().Equals(0))
             {
                 throw new ItemDoesNotExist(Constants.NO_BOOKS_EXIST);
             }
@@ -27,10 +28,10 @@ namespace BookCrudApi.Books.Service
             return books;
         }
 
-        public async Task<Book> GetById(int id)
+        public async Task<BookDto> GetById(int id)
         {
 
-            Book book = await _repository.GetByIdAsync(id);
+            BookDto book = await _repository.GetByIdAsync(id);
 
             if (book == null)
             {
@@ -40,9 +41,9 @@ namespace BookCrudApi.Books.Service
             return book;
         }
 
-        public async Task<Book> GetByTitle(string title)
+        public async Task<BookDto> GetByTitle(string title)
         {
-            Book book = await _repository.GetByTitleAsync(title);
+            BookDto book = await _repository.GetByTitleAsync(title);
 
             if (book == null)
             {

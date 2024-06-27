@@ -57,9 +57,9 @@ namespace tests.UnitTests
 
             var result = await _controller.GetAll();
             var okresult = Assert.IsType<OkObjectResult>(result.Result);
-            var booksAll = Assert.IsType<List<Book>>(okresult.Value);
+            var booksAll = Assert.IsType<ListBookDto>(okresult.Value);
 
-            Assert.Equal(5, booksAll.Count);
+            Assert.Equal(5, booksAll.bookList.Count);
             Assert.Equal(200, okresult.StatusCode);
 
         }
@@ -105,9 +105,9 @@ namespace tests.UnitTests
             _command.Setup(repo => repo.CreateBook(create)).ReturnsAsync(book);
 
             var result = await _controller.CreateBook(create);
-            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var okResult = Assert.IsType<CreatedResult>(result.Result);
 
-            Assert.Equal(okResult.StatusCode, 200);
+            Assert.Equal(okResult.StatusCode, 201);
             Assert.Equal(book, okResult.Value);
         }
 

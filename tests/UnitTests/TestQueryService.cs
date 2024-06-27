@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookCrudApi.Dto;
 using tests.Helpers;
 using Xunit;
 
@@ -30,7 +31,7 @@ namespace tests.UnitTests
         [Fact]
         public async Task GetAll_ItemsDoNotExist()
         {
-            _mock.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<Book>());
+            _mock.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new ListBookDto());
 
             var exception = await Assert.ThrowsAsync<ItemDoesNotExist>(() => _service.GetAll());
 
@@ -49,7 +50,7 @@ namespace tests.UnitTests
             var result = await _service.GetAll();
 
             Assert.NotNull(result);
-            Assert.Contains(books[1], result);
+            Assert.Contains(books.bookList[1], result.bookList);
 
         }
 
@@ -57,7 +58,7 @@ namespace tests.UnitTests
         public async Task GetById_ItemDoesNotExist()
         {
 
-            _mock.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync((Book)null);
+            _mock.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync((BookDto)null);
 
             var exception = await Assert.ThrowsAsync<ItemDoesNotExist>(() => _service.GetById(1));
 
@@ -84,7 +85,7 @@ namespace tests.UnitTests
         public async Task GetByTitle_ItemDoesNotExist()
         {
 
-            _mock.Setup(repo => repo.GetByTitleAsync("")).ReturnsAsync((Book)null);
+            _mock.Setup(repo => repo.GetByTitleAsync("")).ReturnsAsync((BookDto)null);
 
             var exception = await Assert.ThrowsAsync<ItemDoesNotExist>(() => _service.GetByTitle(""));
 
